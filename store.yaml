@@ -1,0 +1,20 @@
+store:
+  title: MuraCMS Store
+  contact: Jeff <jeff@cpcopy.com>
+  icon: https://get.stackato.com/store/icon/third-party.png
+
+applications:
+- name: MuraCMS
+  buildpack: https://github.com/heroku/heroku-buildpack-java
+  instances: 1
+  mem: 1024M
+  services:
+    ${name}-db:
+      type: mysql
+    ${name}-fs:
+      type: filesystem
+  stackato:
+    hooks:
+      post-staging:
+      # setting up in filesystem
+      #- sh stackato-setup.sh
